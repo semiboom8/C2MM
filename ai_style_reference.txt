@@ -1,0 +1,228 @@
+
+UI Styling Tokens and Parameters Reference
+
+== Typography ==
+
+Font Families:
+- Display: 'Titan One', sans-serif (CSS var: --font-display)
+- Primary UI: 'Google Sans Flex', sans-serif (CSS var: --font-primary)
+- Secondary UI: 'Google Sans', sans-serif (CSS var: --font-secondary)
+- Technical/Code: 'Google Sans Code', sans-serif (CSS var: --font-technical)
+- Symbols: 'Google Symbols', sans-serif (CSS var: --font-symbols)
+- Vis.js Tooltip: 'Google Sans Flex', sans-serif (from ContentContainer.tsx .vis-tooltip CSS)
+
+Font Sizes (Base Sizes, can be affected by `clamp` or context):
+- Body Default: Relative, typically 16px browser default unless overridden.
+- Headline (.headline class in App.tsx): clamp(2.5rem, 5vw, 3.5rem)
+- Subtitle (.subtitle class in App.tsx): clamp(0.9rem, 2.5vw, 1.1rem)
+- Attribution (.attribution class in App.tsx): 0.8rem
+- Input Label (.input-label in App.tsx): 0.9rem (as per .options-label which is similar)
+- Video Placeholder Text (.video-placeholder in App.tsx): 0.9rem
+- Content Placeholder Text (.content-placeholder in App.tsx): 1.1rem
+- Options Panel Label (.options-label in OptionsPanel.tsx CSS): 0.9rem
+- Options Checkbox Label (.options-checkbox-label in OptionsPanel.tsx CSS): 0.9rem
+- Options Select/Input (.options-select, .options-input in OptionsPanel.tsx CSS): 0.9rem
+- Slider Label (.slider-label in OptionsPanel.tsx CSS): 0.85rem
+- Split Button Dropdown Item (.custom-dropdown-item in OptionsPanel.tsx CSS): 0.9rem
+- Examples Title (.examples-title in OptionsPanel.tsx CSS): 1rem
+- Example Item Title (.example-item-title in OptionsPanel.tsx CSS): 0.85rem
+- Example Item URL (.example-item-url in OptionsPanel.tsx CSS): 0.75rem
+- Vis.js Node Font (Default in ContentContainer.tsx options.nodes.font):
+    - Obsidian Style: 12px (scaling min 10, max 20 via options.nodes.scaling.label)
+    - Non-Obsidian Style: 13px (scaling min 12, max 24 via options.nodes.scaling.label)
+- Vis.js Node Font (Center Group): Obsidian: 20px, Non-Obsidian: 18px
+- Vis.js Node Font (Main Group): 14px
+- Vis.js Node Font (Detail Group): Obsidian: 11px, Non-Obsidian: 12px
+- Vis.js Node Font (Research Group): 13px
+- Vis.js Node Font (Elaboration Group): 12px
+- Vis.js Node Font (Example, Pros, Cons, Explanation Groups): Obsidian: 11px, Non-Obsidian: 12px
+- Vis.js Node Font (Chat Added Group): Obsidian: 12px, Non-Obsidian: 13px
+- Vis.js Node Font (Historical Event Group): Obsidian: 11px, Non-Obsidian: 12px
+- Vis.js Node Font (Historical Era Group): Obsidian: 13px, Non-Obsidian: 14px
+- Vis.js Edge Label Font (ContentContainer.tsx options.edges.font): 10px
+- Vis.js Tooltip Font (ContentContainer.tsx .vis-tooltip CSS): 11px
+- User Guide Modal Title (.user-guide-modal-title in index.css): 1.4rem
+- User Guide Modal Body (.user-guide-modal-body in index.css): 0.95rem
+- User Guide Modal H3 (index.css): 1.1rem
+- User Guide Modal P (index.css): 0.9rem
+- User Guide Modal Nested LI (index.css): 0.85rem
+- Chat Panel Title (.chat-panel-title in index.css): 1.2rem
+- Chat Message (.chat-message in index.css): 0.9rem
+- Chat Message Sources (.chat-message-sources in index.css): 0.75rem
+- Chat Starter Prompt Button (.chat-starter-prompt-button in index.css): 0.8rem
+- Chat Options Area (.chat-options-area in index.css): 0.85rem
+- Chat Input Field (.chat-input-field in index.css): 0.9rem
+- Toast Notification (.toast-notification in index.css): 0.9rem
+
+Font Weights:
+- Body Default (index.css html, body): 400
+- Headline (.headline class in App.tsx): 400
+- User Guide Modal Title (index.css .user-guide-modal-title): 400
+- Chat Panel Title (index.css .chat-panel-title): 500
+- Chat Entity (.chat-entity in index.css): 600
+- Strong tags in Chat (index.css .chat-message strong): 600
+
+Line Heights:
+- User Guide Modal Body (index.css .user-guide-modal-body): 1.6
+- Chat Message (index.css .chat-message): 1.5
+
+== Colors ==
+
+Global Theme Colors (from :root in index.css):
+- Background: #1e1e1e (CSS var: --color-background)
+- Text: #dcdcdc (CSS var: --color-text)
+- Accent: #4e74e4 (CSS var: --color-accent)
+- Secondary Accent: #7a82a8 (CSS var: --color-secondary-accent)
+- Error: #e57373 (CSS var: --color-error)
+- Obsidian Sidebar BG: #252528 (CSS var: --obsidian-sidebar-bg)
+- Obsidian Editor BG: #1e1e1e (CSS var: --obsidian-editor-bg)
+- Obsidian Border: #3a3a3f (CSS var: --obsidian-border-color)
+- Obsidian Input BG: #2a2a2e (CSS var: --obsidian-input-bg)
+- Obsidian Input Border: #4a4a4f (CSS var: --obsidian-input-border)
+- Obsidian Button BG: #3a3a3f (CSS var: --obsidian-button-bg)
+- Obsidian Button Hover BG: #4a4a4f (CSS var: --obsidian-button-hover-bg)
+- Obsidian Button Text: #dcdcdc (CSS var: --obsidian-button-text)
+- Historical Map Parchment BG: #f5efDC (CSS var: --color-parchment-bg)
+
+Component Specific Colors (from App.tsx inline styles):
+- Headline Text: var(--color-text) (CSS var: --color-headline)
+- Subtitle Text: #b0b0b0 (CSS var: --color-subtitle)
+- Attribution Text: #909090 (CSS var: --color-attribution)
+- Video Container Background: #2a2a2e (CSS var: --color-video-container-background)
+- Video Placeholder Text: #a0a0a0 (CSS var: --color-video-placeholder-text)
+- Content Placeholder Border: var(--obsidian-border-color) (CSS var: --color-content-placeholder-border)
+- Content Placeholder Text: var(--color-text) (CSS var: --color-content-placeholder-text)
+
+Vis.js Node Group Colors (from ContentContainer.tsx options.groups):
+- Default Node Style (options.nodes.color, used if no group matches or group has no color override):
+    - Obsidian: BG: #4A4D6A, Border: #6C709A, Font: #DCDCDC
+    - Non-Obsidian: BG: #3A3D5A, Border: #5C608A, Font: #e0e0e0
+    - Highlight (Obsidian): BG: #5f6283, Border: #88c0d0
+    - Highlight (Non-Obsidian): BG: #4f527a, Border: #88c0d0
+    - Hover (Obsidian): BG: #555879, Border: #77adda
+    - Hover (Non-Obsidian): BG: #45486a, Border: #77adda
+- Center Group: BG: #FFBF00, Border: #A0D2DB, Font: #FFFFFF
+- Main Group: BG: #2A6460, Border: #4A8480, Font: #e8e8e8
+- Detail Group:
+    - Obsidian: BG: #4A4D6A, Border: #6C709A, Font: #DCDCDC
+    - Non-Obsidian: BG: rgba(0,0,0,0), Border: rgba(0,0,0,0), Font: #c0c0c0
+- Research Group: BG: #28a745, Border: #1e7e34, Font: #ffffff
+- Elaboration Group: BG: #b48ead, Border: #886a7b, Font: #f0f0f0
+- Example Node Group: BG: #FFD700, Border: #B8860B, Font: #f0f0f0
+- Pros Node Group: BG: #90EE90, Border: #3CB371, Font: #f0f0f0
+- Cons Node Group: BG: #F08080, Border: #CD5C5C, Font: #f0f0f0
+- Explanation Default Group: BG: #76c7c0, Border: #5a9a94, Font: #f0f0f0
+- Explanation What Group: BG: #6BAED6, Border: #4A7894, Font: #f0f0f0
+- Explanation Who Group: BG: #FD8D3C, Border: #D06B24, Font: #f0f0f0
+- Explanation When Group: BG: #74C476, Border: #528A53, Font: #f0f0f0
+- Explanation Why Group: BG: #9E9AC8, Border: #73708F, Font: #f0f0f0
+- Explanation How Group: BG: #8B5A2B, Border: #B88A5B, Font: #f0f0f0
+- Chat Added Group: BG: #5e81ac, Border: #81a1c1, Font: #eceff4
+- Historical Event Group: BG: #D2B48C, Border: #A0522D, Font (Obsidian): #1E1E1E, Font (Non-Obsidian): #3A2F0B
+- Historical Era Group: BG: #C19A6B, Border: #8B4513, Font (Obsidian): #FFFFFF, Font (Non-Obsidian): #4B3621
+
+Vis.js Edge Colors (from ContentContainer.tsx options.edges.color and options.edges.font):
+- Default Color: #777 (Obsidian), #666 (Non-Obsidian)
+- Highlight Color: #999
+- Hover Color: #888
+- Label Font Color: #b0b0b0
+- Label Background Color: rgba(30,30,30,0.6)
+
+Button & Input Colors (from index.css & OptionsPanel.tsx inline CSS):
+- Primary Button: BG: var(--obsidian-button-bg), Border: var(--obsidian-border-color), Text: var(--obsidian-button-text)
+    - Hover/Active: BG: var(--obsidian-button-hover-bg), Border: var(--color-secondary-accent), Text: #ffffff
+    - Disabled: BG: #2f2f32, Border: #3f3f42, Text: #777777
+- Secondary Button: BG: transparent, Border: var(--color-secondary-accent), Text: var(--color-secondary-accent)
+    - Hover/Active: BG: rgba(78, 116, 228, 0.1), Border: var(--color-accent), Text: var(--color-accent)
+    - Disabled: BG: transparent, Border: #47474a, Text: #505053
+- Input Fields: BG: var(--obsidian-input-bg), Border: var(--obsidian-input-border), Text: var(--color-text)
+    - Disabled: BG: #252528 (general input), #2f2f32 (selects), Border: #3f3f42, Text: #777777
+    - Focus: Border: var(--color-accent)
+    - Placeholder: #777777
+- Slider Thumb: var(--color-accent)
+- Split Button Arrow Border (Default): var(--color-secondary-accent)
+- Split Button Arrow Border (Disabled): var(--color-border-disabled) from main button
+- Split Button Dropdown Item Hover: BG: var(--obsidian-button-hover-bg), Text: #ffffff
+- Split Button Dropdown Item Disabled Text: #777777
+
+Chat Panel Colors (from index.css):
+- User Message BG: var(--color-accent), Text: #ffffff
+- User Message Entity: Text: #ffffff, Border-bottom: rgba(255,255,255,0.5)
+- AI Message BG: var(--obsidian-input-bg), Text: var(--color-text), Border: var(--obsidian-border-color)
+- AI Message Entity (Existing on Map): Text: #FFBF00, Border-bottom: #FFBF00
+- AI Message Entity (New): Text: var(--color-accent), Border-bottom: var(--color-accent)
+- AI Message Entity (New, Hover): Text: #7a82a8, Border-bottom: #7a82a8
+- AI Message Entity (New, Clicked/Added): Text: #FFBF00, Border-bottom: #FFBF00 (solid)
+- AI Message Sources Link: var(--color-accent)
+
+Toast Notification (from index.css):
+- BG: var(--obsidian-button-bg), Text: var(--obsidian-button-text), Border: var(--obsidian-border-color)
+
+== Spacing ==
+
+Margins & Paddings (Key Examples):
+- Main Container (.main-container): padding 2rem (1.5rem mobile)
+- Left Side (.left-side): gap 1rem
+- Options Panel (.options-panel): padding 1rem, margin-top 1rem
+- Options Group (.options-group): margin-bottom 0.75rem
+- Buttons (general): padding 0.5rem 1rem
+- Options Buttons (.options-button): padding 0.6rem 1rem
+- Inputs (general): padding 0.5rem
+- Options Select/Input: padding 0.4rem 0.6rem
+- Vis.js Node Margin (Default, Obsidian): top/right/bottom/left: 10px
+- Vis.js Node Margin (Default, Non-Obsidian): top/bottom: 8px, right/left: 12px
+- Vis.js Node Margin (Center Group, Obsidian): top/bottom: 15px, right/left: 20px
+- Vis.js Node Margin (Detail Group, Obsidian): top/right/bottom/left: 8px
+- Vis.js Tooltip: padding 5px 8px (from ContentContainer.tsx CSS), 6px 8px (from index.css override)
+- User Guide Modal Content: padding 1.5rem 2rem
+- Chat Panel Header: padding 0.75rem 1.25rem
+- Chat Messages Area: padding 1rem 1.25rem, gap 0.75rem
+- Chat Message (.chat-message): padding 0.6rem 0.9rem
+- Chat Input Area: padding 0.75rem 1.25rem, gap 0.75rem
+
+Grid/Gap Sizes:
+- Main Container (.main-container): gap 2rem (1.5rem mobile)
+- Left Side (.left-side): gap 1rem
+- Options Panel Button Grid (.button-grid): gap 0.5rem
+- Chat Messages Area (.chat-messages-area): gap 0.75rem
+- Chat Input Area (.chat-input-area): gap 0.75rem
+- Chat Starter Prompts (.chat-starter-prompts): gap 0.5rem
+
+== Node styling (Vis.js from ContentContainer.tsx) ==
+- Shape:
+    - Default (Obsidian): 'dot'
+    - Default (Non-Obsidian / Historical): 'box'
+    - Center Group: 'ellipse'
+    - Main Group: 'dot' (Obsidian), 'box' (Non-Obsidian)
+    - Detail Group: 'dot' (Obsidian), 'text' (Non-Obsidian)
+    - Research Group: 'star'
+    - Elaboration Group: 'dot'
+    - Example_node, Pros_node, Cons_node, All Explanation_ Groups: 'dot'
+    - Chat_added Group: 'dot' (Obsidian), 'box' (Non-Obsidian)
+    - Historical_event Group: 'dot' (Obsidian), 'box' (Non-Obsidian)
+    - Historical_era Group: 'dot' (Obsidian), 'ellipse' (Non-Obsidian)
+- Radius Limits: Not explicitly defined as "radius", but `size` and `scaling` properties control visual size. 'dot' shape implies circular.
+- Border Widths: `borderWidth: 1`, `borderWidthSelected: 2` (default node options)
+    - Center Group: `borderWidth: 3`
+- Label Placement Rules: Handled by Vis.js default. `scaling.label.drawThreshold` (prop: `textFadeThreshold`, default 8 for Obsidian, 5 for Non-Obsidian) controls visibility on zoom. `scaling.label.maxVisible` (25 for Obsidian, 20 for Non-Obsidian) also influences this.
+- `value` field (integer 1-10 for Obsidian style): Affects node size through `scaling` options.
+    - `BASE_OBSIDIAN_NODE_SCALING_MIN`: 10
+    - `BASE_OBSIDIAN_NODE_SCALING_MAX`: 30
+- Base Sizes:
+    - `BASE_OBSIDIAN_NODE_SIZE`: 15
+    - `BASE_NON_OBSIDIAN_NODE_SIZE`: 20 (capped by `MAX_NON_OBSIDIAN_NODE_SIZE`: 50)
+    - Specific groups (elaboration, example, etc.) often have explicit `size` (e.g., 14, 15).
+- Shadow: `shadow: false` (default node options)
+
+== Link styling (Vis.js Edges from ContentContainer.tsx) ==
+- Thickness Multiplier: `linkThicknessMultiplier` prop (default 1.0, range 0.5-3.0). Base width is `BASE_EDGE_WIDTH` (1).
+- Default Color: #777 (Obsidian), #666 (Non-Obsidian)
+- Hover Color: #888
+- Highlight Color: #999
+- Arrowhead Types and Sizes:
+    - Obsidian Style: Disabled (empty string for `arrows.to.type` or `arrows: ''`)
+    - Non-Obsidian & Historical Map: Enabled (`arrows: { to: { enabled: true, scaleFactor: 0.7, type: 'arrow' }}`)
+- Edge Dash Patterns: `MindMapEdge` type allows `dashes?: boolean | number[]`, but not actively used in default options.
+- Smoothness (Curves):
+    - Obsidian & Historical Map: Disabled (`smooth: { enabled: false }`)
+    - Non-Obsidian: Enabled (`smooth: { enabled: true, type: "cubicBezier", forceDirection: "vertical", roundness: 0

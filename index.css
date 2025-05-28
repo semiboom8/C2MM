@@ -1,0 +1,603 @@
+
+
+
+@import url('https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css');
+/* @import url('https://cdn.jsdelivr.net/npm/react-tabs@6.1.0/style/react-tabs.min.css'); Removed */
+
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Titan+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Google+Symbols');
+
+:root {
+  /* Obsidian-like dark theme */
+  --color-background: #1e1e1e; /* Obsidian's main dark background */
+  --color-text: #dcdcdc;      /* Light grey text */
+  --color-accent: #4e74e4;     /* A common Obsidian accent blue */
+  --color-secondary-accent: #7a82a8; /* Lighter accent for borders/less prominent items */
+  --color-error: #e57373;      /* Softer red for errors in dark mode */
+
+  --font-display: 'Titan One', sans-serif; /* Keeping existing for now */
+  --font-primary: 'Google Sans Flex', sans-serif;
+  --font-secondary: 'Google Sans', sans-serif;
+  --font-technical: 'Google Sans Code', sans-serif;
+  --font-symbols: 'Google Symbols', sans-serif;
+
+  /* Obsidian specific UI element colors */
+  --obsidian-sidebar-bg: #252528;
+  --obsidian-editor-bg: #1e1e1e;
+  --obsidian-border-color: #3a3a3f;
+  --obsidian-input-bg: #2a2a2e;
+  --obsidian-input-border: #4a4a4f;
+  --obsidian-button-bg: #3a3a3f;
+  --obsidian-button-hover-bg: #4a4a4f;
+  --obsidian-button-text: #dcdcdc;
+
+  /* Historical Map Style */
+  --color-parchment-bg: #f5efDC;
+}
+
+html,
+body {
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-primary);
+  font-weight: 400;
+  margin: 0;
+  max-width: 100vw;
+  min-height: 100vh;
+  overflow-x: hidden;
+  padding: 0;
+}
+
+/* Remove default margins and padding */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+ul,
+ol,
+dl,
+dt,
+dd,
+figure,
+figcaption,
+table,
+th,
+td,
+form,
+fieldset,
+legend,
+button,
+input,
+select,
+textarea {
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  border: 1px solid; /* Reduced border width */
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  transition: background-color 0.2s, border-color 0.2s, color 0.2s, opacity 0.2s;
+}
+
+button:focus {
+  outline-color: var(--color-accent);
+  box-shadow: 0 0 0 2px rgba(78, 116, 228, 0.3); /* Subtle focus ring for dark mode */
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+.button-primary {
+  --color-background: var(--obsidian-button-bg);
+  --color-background-active: var(--obsidian-button-hover-bg);
+  --color-background-disabled: #2f2f32; 
+
+  --color-border: var(--obsidian-border-color);
+  --color-border-active: var(--color-secondary-accent);
+  --color-border-disabled: #3f3f42;
+
+  --color-text: var(--obsidian-button-text);
+  --color-text-active: #ffffff;
+  --color-text-disabled: #777777;
+
+  background-color: var(--color-background);
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
+
+.button-primary:hover:not(:disabled),
+.button-primary:active:not(:disabled) {
+  background-color: var(--color-background-active);
+  border-color: var(--color-border-active);
+  color: var(--color-text-active);
+}
+
+.button-primary:disabled {
+  background-color: var(--color-background-disabled);
+  border-color: var(--color-border-disabled);
+  color: var(--color-text-disabled);
+}
+
+.button-secondary {
+  --color-background: transparent;
+  --color-background-active: rgba(78, 116, 228, 0.1); 
+  --color-background-disabled: transparent;
+
+  --color-border: var(--color-secondary-accent);
+  --color-border-active: var(--color-accent);
+  --color-border-disabled: #47474a;
+
+  --color-text: var(--color-secondary-accent);
+  --color-text-active: var(--color-accent);
+  --color-text-disabled: #505053;
+
+  background-color: var(--color-background);
+  border-color: var(--color-border);
+  color: var(--color-text); /* Ensure text color is applied */
+}
+
+.button-secondary:hover:not(:disabled),
+.button-secondary:active:not(:disabled) {
+  background-color: var(--color-background-active);
+  border-color: var(--color-border-active);
+  color: var(--color-text-active);
+}
+
+.button-secondary:disabled {
+  background-color: var(--color-background-disabled);
+  border-color: var(--color-border-disabled);
+  color: var(--color-text-disabled);
+}
+
+
+input[type="text"],
+input { /* General input fallback */
+  --color-background: var(--obsidian-input-bg);
+  --color-background-disabled: #252528;
+
+  --color-border: var(--obsidian-input-border);
+  --color-border-disabled: #3f3f42;
+
+  --color-text: var(--color-text);
+  --color-text-disabled: #777777;
+
+  background-color: var(--color-background);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
+  border-radius: 4px;
+  box-sizing: border-box;
+  padding: 0.5rem;
+  transition: background-color 0.2s, border-color 0.2s, color 0.2s, opacity 0.2s;
+}
+
+input:disabled {
+  background-color: var(--color-background-disabled);
+  border-color: var(--color-border-disabled);
+  color: var(--color-text-disabled);
+  cursor: not-allowed;
+}
+
+input::placeholder {
+  color: #777777; /* Darker placeholder for dark inputs */
+  opacity: 1; /* Ensure placeholder color is respected */
+}
+
+input:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 2px rgba(78, 116, 228, 0.3); /* Subtle focus ring */
+}
+
+input:focus::placeholder {
+  opacity: 0; /* Keep this behavior */
+}
+
+/* Tooltip text wrapping fix for vis-network (User Provided) */
+.vis-network .vis-tooltip {
+  white-space: normal !important;
+  word-break: break-word !important;
+  overflow-wrap: anywhere !important;
+  max-width: 250px !important;
+  padding: 6px 8px !important;
+}
+
+/* User Guide Modal Styles */
+.user-guide-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000; 
+  backdrop-filter: blur(3px);
+}
+
+.user-guide-modal-content {
+  background-color: var(--obsidian-sidebar-bg, #252528);
+  padding: 1.5rem 2rem;
+  border-radius: 8px;
+  border: 1px solid var(--obsidian-border-color, #3a3a3f);
+  width: 90%;
+  max-width: 600px;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.user-guide-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--obsidian-border-color, #3a3a3f);
+  padding-bottom: 0.75rem;
+}
+
+.user-guide-modal-title {
+  font-size: 1.4rem;
+  color: var(--color-text, #dcdcdc);
+  font-family: var(--font-display);
+  font-weight: 400;
+}
+
+.user-guide-modal-close-button {
+  background: none;
+  border: none;
+  color: var(--color-text, #dcdcdc);
+  font-size: 1.8rem;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  line-height: 1;
+}
+.user-guide-modal-close-button:hover {
+  color: var(--color-accent);
+}
+
+
+.user-guide-modal-body {
+  overflow-y: auto;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--color-text, #dcdcdc);
+  scrollbar-width: thin;
+  scrollbar-color: var(--obsidian-border-color) var(--obsidian-input-bg);
+  padding-right: 0.5rem; 
+}
+
+.user-guide-modal-body::-webkit-scrollbar { width: 8px; }
+.user-guide-modal-body::-webkit-scrollbar-track { background: var(--obsidian-input-bg); border-radius: 4px; }
+.user-guide-modal-body::-webkit-scrollbar-thumb {
+  background-color: var(--obsidian-border-color);
+  border-radius: 4px;
+  border: 2px solid var(--obsidian-input-bg);
+}
+
+
+.user-guide-modal-body h3 {
+  font-size: 1.1rem;
+  color: var(--color-accent);
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  font-family: var(--font-secondary);
+}
+.user-guide-modal-body h3:first-child {
+  margin-top: 0;
+}
+
+
+.user-guide-modal-body ul, .user-guide-modal-body ol {
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+.user-guide-modal-body ul ul { /* Nested lists */
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+
+.user-guide-modal-body li {
+  margin-bottom: 0.75rem;
+}
+.user-guide-modal-body ul li p { /* Paragraphs inside list items in main UL */
+    margin-bottom: 0.1rem;
+}
+.user-guide-modal-body ul ul li { /* List items in nested UL */
+    margin-bottom: 0.25rem;
+    font-size: 0.85rem;
+}
+
+
+.user-guide-modal-body p {
+  margin-bottom: 0.25rem;
+  font-size: 0.9rem;
+  color: var(--color-subtitle, #b0b0b0);
+}
+.user-guide-modal-body strong {
+    color: var(--color-text);
+}
+
+/* Chat Panel Styles - Floating Panel */
+.chat-panel-content {
+  position: absolute; 
+  background-color: var(--obsidian-sidebar-bg, #252528);
+  padding: 0; 
+  border-radius: 8px;
+  border: 1px solid var(--obsidian-border-color, #3a3a3f);
+  width: 450px; 
+  min-width: 300px; 
+  height: 500px; 
+  min-height: 250px; 
+  max-height: 80vh; 
+  max-width: 90vw; 
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.45);
+  overflow: hidden; 
+  resize: both; 
+  z-index: 990; 
+}
+
+.chat-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1.25rem;
+  border-bottom: 1px solid var(--obsidian-border-color, #3a3a3f);
+  cursor: grab; 
+  user-select: none; 
+}
+.chat-panel-header:active {
+    cursor: grabbing;
+}
+
+
+.chat-panel-title {
+  font-size: 1.2rem;
+  color: var(--color-text, #dcdcdc);
+  font-family: var(--font-secondary);
+  font-weight: 500;
+}
+
+.chat-panel-close-button {
+  background: none;
+  border: none;
+  color: var(--color-text, #dcdcdc);
+  font-size: 1.7rem;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0.2rem 0.4rem;
+  line-height: 1;
+}
+.chat-panel-close-button:hover {
+  color: var(--color-accent);
+}
+
+.chat-messages-area {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--obsidian-border-color) var(--obsidian-input-bg);
+}
+.chat-messages-area::-webkit-scrollbar { width: 8px; }
+.chat-messages-area::-webkit-scrollbar-track { background: var(--obsidian-input-bg); border-radius: 4px; }
+.chat-messages-area::-webkit-scrollbar-thumb {
+  background-color: var(--obsidian-border-color);
+  border-radius: 4px;
+  border: 2px solid var(--obsidian-input-bg);
+}
+
+
+.chat-message {
+  padding: 0.6rem 0.9rem;
+  border-radius: 12px;
+  max-width: 85%;
+  word-wrap: break-word;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.chat-message strong { /* General strong tag within chat messages, if any */
+    font-weight: 600; 
+    color: inherit;   
+}
+
+/* Interactive entity styling */
+.chat-message .chat-entity {
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px dotted; /* Common underline style */
+  transition: color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+  padding: 0 0.1em; /* Minimal padding for better visual separation */
+}
+
+.chat-message .chat-entity.existing-on-map {
+  color: #FFBF00; /* Yellow */
+  cursor: default;
+  border-bottom-color: #FFBF00;
+}
+
+.chat-message .chat-entity.new-entity {
+  color: var(--color-accent); /* Theme blue */
+  cursor: pointer;
+  border-bottom-color: var(--color-accent);
+}
+
+.chat-message .chat-entity.new-entity:hover:not(.clicked) {
+  color: #7a82a8; /* Paler blue on hover */
+  border-bottom-color: #7a82a8;
+}
+
+.chat-message .chat-entity.new-entity.clicked {
+  color: #FFBF00; /* Yellow after click */
+  cursor: default;
+  border-bottom-color: #FFBF00;
+  border-bottom-style: solid; /* Change to solid underline after adding */
+}
+
+
+.chat-message.user {
+  background-color: var(--color-accent);
+  color: #ffffff;
+  align-self: flex-end;
+  border-bottom-right-radius: 4px;
+}
+.chat-message.user .chat-entity,
+.chat-message.user .chat-entity:hover:not(.clicked),
+.chat-message.user .chat-entity.clicked {
+    color: #ffffff; 
+    border-bottom-color: rgba(255,255,255,0.5);
+}
+.chat-message.user .chat-entity.clicked {
+    border-bottom-style: solid; 
+}
+
+
+.chat-message.ai {
+  background-color: var(--obsidian-input-bg, #2a2a2e);
+  color: var(--color-text, #dcdcdc);
+  align-self: flex-start;
+  border: 1px solid var(--obsidian-border-color);
+  border-bottom-left-radius: 4px;
+}
+.chat-message.ai.loading-message {
+  font-style: italic;
+  color: #aaa;
+}
+.chat-message-sources {
+    font-size: 0.75rem;
+    margin-top: 0.5rem;
+    padding-top: 0.3rem;
+    border-top: 1px dashed rgba(128,128,128,0.3);
+}
+.chat-message-sources strong {
+    display: block;
+    margin-bottom: 0.2rem;
+    color: var(--color-secondary-accent);
+}
+.chat-message-sources ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+}
+.chat-message-sources li {
+    margin-bottom: 0.15rem;
+}
+.chat-message-sources a {
+    color: var(--color-accent);
+    text-decoration: none;
+}
+.chat-message-sources a:hover {
+    text-decoration: underline;
+}
+
+
+.chat-starter-prompts {
+  padding: 0.5rem 1.25rem 0.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  border-bottom: 1px solid var(--obsidian-border-color, #3a3a3f);
+}
+
+.chat-starter-prompt-button {
+  background-color: var(--obsidian-button-bg);
+  color: var(--obsidian-button-text);
+  border: 1px solid var(--obsidian-border-color);
+  padding: 0.4rem 0.8rem;
+  font-size: 0.8rem;
+  border-radius: 15px; 
+}
+.chat-starter-prompt-button:hover:not(:disabled) {
+  background-color: var(--obsidian-button-hover-bg);
+  border-color: var(--color-secondary-accent);
+}
+.chat-starter-prompt-button:disabled {
+  background-color: #2f2f32;
+  color: #777;
+  border-color: #3f3f42;
+  opacity: 0.6;
+}
+
+.chat-options-area {
+  padding: 0.6rem 1.25rem;
+  border-bottom: 1px solid var(--obsidian-border-color, #3a3a3f);
+  font-size: 0.85rem;
+}
+.chat-options-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: var(--color-text);
+}
+.chat-options-label input[type="checkbox"] {
+  margin-right: 0.5rem;
+  accent-color: var(--color-accent);
+  width: 14px;
+  height: 14px;
+}
+
+
+.chat-input-area {
+  display: flex;
+  padding: 0.75rem 1.25rem;
+  gap: 0.75rem;
+}
+
+.chat-input-field {
+  flex-grow: 1;
+  padding: 0.6rem 0.8rem;
+  font-size: 0.9rem;
+  resize: none; 
+}
+
+.chat-send-button {
+  padding: 0.6rem 1.2rem;
+  font-size: 0.9rem;
+}
+
+/* Toast Notification Styles */
+.toast-notification {
+  position: fixed;
+  bottom: 20px; /* Or top: 20px; */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--obsidian-button-bg, #3a3a3f);
+  color: var(--obsidian-button-text, #dcdcdc);
+  padding: 10px 20px;
+  border-radius: 6px;
+  border: 1px solid var(--obsidian-border-color, #3a3a3f);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1001; /* Above user guide modal if needed, or just high */
+  font-size: 0.9rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.toast-notification.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0); /* Animate in */
+}
